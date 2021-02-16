@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="multipage_website/css/style1.css">
+    <title>MultiPage Smartz Home</title>
+  </head>
+  <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyCoCVBhBooyLGH9nSqL74k31x1KCBz-usM",
+        authDomain: "smartz-multi-page.firebaseapp.com",
+        projectId: "smartz-multi-page",
+        storageBucket: "smartz-multi-page.appspot.com",
+        messagingSenderId: "625324096237",
+        appId: "1:625324096237:web:e23c21f03e438e27f4eae4",
+        measurementId: "G-1TCZM9MQEE"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+
+
+      function writeData(){
+        firebase.database().ref("User").set({
+          name: document.getElementById("nameField").value,
+          password:document.getElementById("password").value,
+        });
+      }
+    </script>
+
+
+<!---Main Body---->
+  <h1>Smartz</h1>
+  <header>
+    <nav>
+      <div class="topnav">
+        <a class="active" href="#">Home</a>
+        <a class="topnav-right" href="#">
+  <button onclick="">Log In</button></a>
+</div>
+</nav>
+</header>
+
+
+
+
+
+  </body>
+</html>
