@@ -44,7 +44,7 @@ const firebaseConfig = {
   appId: "1:944526671032:web:b000aab0c45b3d1a24c84d",
   measurementId: "G-E08G9LVF8J"
 };
-firebase.initializeApp(config);
+
 
 // Set the configuration for your app
  // TODO: Replace with your project's config object
