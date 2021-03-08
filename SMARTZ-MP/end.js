@@ -44,7 +44,23 @@ const firebaseConfig = {
   appId: "1:944526671032:web:b000aab0c45b3d1a24c84d",
   measurementId: "G-E08G9LVF8J"
 };
+firebase.initializeApp(config);
 
+// Set the configuration for your app
+ // TODO: Replace with your project's config object
+ var config = {
+   apiKey: "AIzaSyC2TFmC8aG56DRUUEnK1zk82UXW3CgTtLI",
+   authDomain: "tech3010-smartz-mp",
+   // For databases not in the us-central1 location, databaseURL will be of the
+   // form https://[databaseName].[region].firebasedatabase.app.
+   // For example, https://your-database-123.europe-west1.firebasedatabase.app
+   databaseURL: "https://tech3010-smartz-mp-default-rtdb.europe-west1.firebasedatabase.app/",
+   storageBucket: "tech3010-smartz-mp.appspot.com"
+ };
+ firebase.initializeApp(config);
+
+ // Get a reference to the database service
+ var database = firebase.database();
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
