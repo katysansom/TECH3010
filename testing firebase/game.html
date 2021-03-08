@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+  </head>
+  <body>
+    <h1>This is my test game</h1>
+    <div class="alert alert-success success-message" style="display:none;">Form submitted successfully.</div>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="exampleFullName">Full Name</label>
+            <input type="text" class="form-control fullname" id="exampleFullName" placeholder="Enter Full Name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleScore">Score</label>
+            <input type="score" class="form-control score" id="exampleScore" placeholder="Enter Score" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+<div id="scores">
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>
