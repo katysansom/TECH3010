@@ -28,7 +28,7 @@ const MAX_HIGH_SCORES = 10;
 
 
 function addItemsToList(name, score){
-  var ul=document.getElementsById('highScoresList');
+  var ul=document.getElementById('highScoresList');
   var header= document.createElement('h2');
 
   var header= document.createElement('li'); //the number of highscores shown
@@ -66,4 +66,7 @@ function FetchAllData(){
   })
 }
 
-window.onload(FetchAllData());
+window.onload = () => {
+    console.log('Onload function called');
+    FetchAllData();
+}
