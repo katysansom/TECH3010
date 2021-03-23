@@ -32,7 +32,7 @@ saveHighScore = (e) => {
     name: username.value,
   };
 
-  scoresRef.set(score);
+  scoresRef.push(score);
 
   /*
   highScores.push(score);

@@ -26,47 +26,32 @@ console.log(mostRecentScore);
 
 const MAX_HIGH_SCORES = 10;
 
-
-function addItemsToList(name, score){
-  var ul=document.getElementById('highScoresList');
-  var header= document.createElement('h2');
-
-  var header= document.createElement('li'); //the number of highscores shown
-  var header= document.createElement('li');
-  var header= document.createElement('li');
-  var header= document.createElement('li');
-  var header= document.createElement('li');
-  var header= document.createElement('li');
-  var header= document.createElement('li');
-  var header= document.createElement('li');
-  var header= document.createElement('li');
-  var header= document.createElement('li');
-
-  header.innerHTML= 'Highscores-'+ (++scores)
-
-  _name.innerHTML='Name: '+name;
-  _score.innerHTML='Score: '+score;
-
-  ul.appendChild(header);
-  ul.appendChild(_name);
-  ul.appendChild(_score);
+function addItemsToList(name, score) {
+  let ul = document.getElementById("highScoresList");
+  let listItem = document.createElement("li"); //the number of highscores shown
+  let contents = document.createTextNode(
+    "Name: " + name + "   Score: " + score
+  );
+  listItem.appendChild(contents);
+  ul.appendChild(listItem);
 }
 
-
 //calls for the data from database
-function FetchAllData(){
-  firebase.database().ref('scores').once('value', function(snapshot){//a snapshot is a picture of the data at a particular database reference at a single point in time
-    snapshot.forEach(
-      function(ChildSnapshot){
-        let name= ChildSnapshot.val().name;
-        let score= ChildSnapshot.val().score;
-        addItemsToList(name,score);
-      }
-    )
-  })
+function FetchAllData() {
+  firebase
+    .database()
+    .ref("scores")
+    .once("value", function (snapshot) {
+      //a snapshot is a picture of the data at a particular database reference at a single point in time
+      snapshot.forEach(function (ChildSnapshot) {
+        let name = ChildSnapshot.val().name;
+        let score = ChildSnapshot.val().score;
+        addItemsToList(name, score);
+      });
+    });
 }
 
 window.onload = () => {
-    console.log('Onload function called');
-    FetchAllData();
-}
+  console.log("Onload function called");
+  FetchAllData();
+};

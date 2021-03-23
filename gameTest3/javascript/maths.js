@@ -105,9 +105,12 @@ choices.forEach(choice => {
     const classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect"; //uses a ternary syntax operator so that if this condition is true it will assign the equivelant value
 
+
     if (classToApply === "correct") { //makes the bottom code work as it calls the information
       incrementScore(CORRECT_BONUS);
     }
+
+
 
     selectedChoice.parentElement.classList.add(classToApply); //it will only apply the class for long enough to show the colour before dissapearing to display the next question
     setTimeout(() => {//gives a delay before removing the class
