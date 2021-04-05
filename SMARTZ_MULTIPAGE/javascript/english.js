@@ -77,7 +77,7 @@ getNewQuestion = () => {
     return window.location.assign("endEnglish.html");
   }
   questionCounter++;
-  progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`; //what number question they are on out of the max number of questions using es6 template literals
+  progressText.innerHTML = `Question ${questionCounter}/${MAX_QUESTIONS}`; //what number question they are on out of the max number of questions using es6 template literals
   //Update the progress bar
   progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;//calculates how far we are and displays in the progress bar with the needed percentage
 
@@ -87,7 +87,7 @@ getNewQuestion = () => {
 
   choices.forEach(choice => { //will display the options to the question being displayed due to the script above
     const number = choice.dataset["number"];
-    choice.innerText = currentQuestion["choice" + number];
+    choice.innerHTML = currentQuestion["choice" + number];
   });
 
   availableQuesions.splice(questionIndex, 1); //takes the availible questions array and removes the question that had just been displayed
@@ -123,5 +123,5 @@ choices.forEach(choice => {
 
 incrementScore = num => { //checks if they got the correct answer then adds on the number of points and displays in the hud
   score += num;
-  scoreText.innerText = score;
+  scoreText.innerHTML = score;
 };
