@@ -11,29 +11,28 @@ var firebaseConfig = {
    measurementId: "G-91NHFX7CB9"
  };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 // Reference messages collection
-var scoresRef = firebase.database().ref("general/");
+var scoresRef = firebase.database().ref("english/");
 
-const username = document.getElementById("username");
-const saveScoreBtn = document.getElementById("saveScoreBtn");
-const finalScore = document.getElementById("finalScore");
-const mostRecentScore = localStorage.getItem("mostRecentScore");
-console.log(mostRecentScore);
+const usernameE = document.getElementById("usernameE");
+const saveScoreBtnE = document.getElementById("saveScoreBtnE");
+const finalScoreE = document.getElementById("finalScoreE");
+const mostRecentScoreE = localStorage.getItem("mostRecentScoreE");
+console.log(mostRecentScoreE);
 
-const MAX_HIGH_SCORES = 10;
+const MAX_HIGH_SCORESE = 10;
 
-saveHighScore = (e) => {
+saveHighScoreE = (e) => {
   e.preventDefault(); //stops the defult from submitting to a new page
   console.log("SAVE SCORE");
-  const score = {
-    score: mostRecentScore,
-    name: username.value,
+  const scoreE = {
+    scoreE: mostRecentScoreE,
+    nameE: usernameE.value,
   };
 
-  scoresRef.push(score);
-console.log("mostRecentScore");
+  scoresRef.push(scoreE);
+console.log("mostRecentScoreE");
   /*
   highScores.push(score);
   highScores.sort((a, b) => b.score - a.score); //will filter scores and only display highest numbers
@@ -45,25 +44,25 @@ console.log("mostRecentScore");
 
 /*local storage means you can only use key value pairs with the value being a string so anything being stored will be stored as a string*/
 
-finalScore.innerText = mostRecentScore; // NOTE: displays most recent score in html
+finalScoreE.innerText = mostRecentScoreE; // NOTE: displays most recent score in html
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
 //var storage = firebase.storage();
 // Create a storage reference from our storage service
 //var storageRef = storage.ref();
 
-$("#general_knowledge_game_end").submit(function (e) {
+$("#english_end").submit(function (e) {
   e.preventDefault();
 
   var newMessageRef = messagesRef.push();
   newMessageRef.set({
-    name: $(".username").val(),
-    score: $(".score").val(),
+    nameE: $(".usernameE").val(),
+    scoreE: $(".scoreE").val(),
   });
 
 });
 
 enableSave = () => {
-  document.getElementById("saveScoreBtn").removeAttribute("disabled");
+  document.getElementById("saveScoreBtnE").removeAttribute("disabled");
 };
-document.getElementById("username").addEventListener("keyup", enableSave);
+document.getElementById("usernameE").addEventListener("keyup", enableSave);

@@ -15,42 +15,47 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.analytics();
 // Reference messages collection
-var scoresRef = firebase.database().ref("general/");
+var scoresRefM = firebase.database().ref("math/");
 
-const usernameGKL = document.getElementById("username");
-const saveScoreBtnGKL = document.getElementById("saveScoreBtn");
-const finalScoreGKL = document.getElementById("finalScore");
-const mostRecentScoreGKL = localStorage.getItem("mostRecentScore");
-console.log(mostRecentScoreGKL);
+const usernameML = document.getElementById("usernameM");
+const saveScoreBtnML = document.getElementById("saveScoreBtnM");
+const finalScoreML = document.getElementById("finalScoreM");
+const mostRecentScoreML = localStorage.getItem("mostRecentScoreM");
+console.log(mostRecentScoreML);
 
-const MAX_HIGH_SCORESGKL = 10;
+const MAX_HIGH_SCORESML = 10;
 
 
-function addItemsToListGK(name, score) {
-  let ul = document.getElementById("highScoresListGK");
-  let listItem = document.createElement("li"); //the number of highscores shown
+function addItemsToListM(nameM, scoreM) {
+  console.log("adding chikd", nameM, scoreM);
+  let ulM = document.getElementById("highScoresListM");
+  let listItemML = document.createElement("li"); //the number of highscores shown
   let contents = document.createTextNode(
-    "Name: " + name +  "   Score: " + score
+    "Name: " + nameM +  "   Score: " + scoreM
   );
-  listItem.appendChild(contents);
-  ul.appendChild(listItem);
+  listItemML.appendChild(contents);
+  ulM.appendChild(listItemML);
 }
 
 
 //calls for the data from database
-function FetchAllDataGK() {
+function FetchAllDataM() {
   firebase
     .database()
-    .ref("general")
+    .ref("math")
     .once("value", function (snapshot) {
+      console.log("Data", snapshot);
       //a snapshot is a picture of the data at a particular database reference at a single point in time
       snapshot.forEach(function (ChildSnapshot) {
-        let name = ChildSnapshot.val().name;
-        let score = ChildSnapshot.val().score;
-        addItemsToListGK(name, score);
+        console.log("hild", ChildSnapshot);
+        let nameM = ChildSnapshot.val().nameM;
+        let scoreM = ChildSnapshot.val().scoreM;
+        addItemsToListM(nameM, scoreM);
       });
     });
 }
 
 
-  FetchAllDataGK();
+  FetchAllDataM();
+
+  console.log("highScoresListM");

@@ -11,29 +11,28 @@ var firebaseConfig = {
    measurementId: "G-91NHFX7CB9"
  };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 // Reference messages collection
-var scoresRef = firebase.database().ref("general/");
+var scoresRef = firebase.database().ref("maths/");
 
-const username = document.getElementById("username");
-const saveScoreBtn = document.getElementById("saveScoreBtn");
-const finalScore = document.getElementById("finalScore");
-const mostRecentScore = localStorage.getItem("mostRecentScore");
-console.log(mostRecentScore);
+const usernameM = document.getElementById("usernameM");
+const saveScoreBtnM = document.getElementById("saveScoreBtnM");
+const finalScoreM = document.getElementById("finalScoreM");
+const mostRecentScoreM = localStorage.getItem("mostRecentScoreM");
+console.log(mostRecentScoreM);
 
-const MAX_HIGH_SCORES = 10;
+const MAX_HIGH_SCORESM = 10;
 
-saveHighScore = (e) => {
+saveHighScoreM = (e) => {
   e.preventDefault(); //stops the defult from submitting to a new page
   console.log("SAVE SCORE");
-  const score = {
-    score: mostRecentScore,
-    name: username.value,
+  const scoreM = {
+    scoreM: mostRecentScoreM,
+    nameM: usernameM.value,
   };
 
-  scoresRef.push(score);
-console.log("mostRecentScore");
+  scoresRef.push(scoreM);
+console.log("mostRecentScoreM");
   /*
   highScores.push(score);
   highScores.sort((a, b) => b.score - a.score); //will filter scores and only display highest numbers
@@ -45,25 +44,25 @@ console.log("mostRecentScore");
 
 /*local storage means you can only use key value pairs with the value being a string so anything being stored will be stored as a string*/
 
-finalScore.innerText = mostRecentScore; // NOTE: displays most recent score in html
+finalScoreM.innerText = mostRecentScoreM; // NOTE: displays most recent score in html
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
 //var storage = firebase.storage();
 // Create a storage reference from our storage service
 //var storageRef = storage.ref();
 
-$("#general_knowledge_game_end").submit(function (e) {
+$("#maths_end").submit(function (e) {
   e.preventDefault();
 
   var newMessageRef = messagesRef.push();
   newMessageRef.set({
-    name: $(".username").val(),
-    score: $(".score").val(),
+    nameM: $(".usernameM").val(),
+    scoreM: $(".scoreM").val(),
   });
 
 });
 
 enableSave = () => {
-  document.getElementById("saveScoreBtn").removeAttribute("disabled");
+  document.getElementById("saveScoreBtnM").removeAttribute("disabled");
 };
-document.getElementById("username").addEventListener("keyup", enableSave);
+document.getElementById("usernameM").addEventListener("keyup", enableSave);

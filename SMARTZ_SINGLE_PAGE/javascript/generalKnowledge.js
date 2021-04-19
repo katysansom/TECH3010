@@ -10,14 +10,14 @@ let currentQuestion = {};
 let acceptingAnswers = false; //to create a second delay after someone answers beofre letting them answer to give the script enough time to log and pull up the information
 let score = 0;
 let questionCounter = 0;
-let availableQuesions = []; //copy of full question set and will take out a question from the availible questions so it doesnt get repeated
+let availableQuestions = []; //copy of full question set and will take out a question from the availible questions so it doesnt get repeated
 let questions = [];
 
 
 
 // NOTE: calls the question from OPEN DB and returns the information into the areas specified in the html
 fetch(
-    'https://opentdb.com/api.php?amount=33&category=9&type=multiple'
+    'https://opentdb.com/api.php?amount=33&category=10&type=multiple'
 )
     .then((res) => {
      return res.json();
@@ -57,25 +57,26 @@ const MAX_QUESTIONS = 10; //number of questions available in each game
 startGame = () => {
   questionCounter = 0;
   score = 0;
-  availableQuesions = [...questions]; //...questions means that it will take the array, spread out all of the items and put it into a new array and thats what availible questions is going to be
+  availableQuestions = [...questions]; //...questions means that it will take the array, spread out all of the items and put it into a new array and thats what availible questions is going to be
   getNewQuestion();
   game.classList.remove("hidden"); //when the game is ready it will display
   loader.classList.add("hidden"); //when the game is ready the loader will dissappear to show the question
 };
 
 getNewQuestion = () => {
-  if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {//once we have gone through all the questions availible or have maxed out the number of questions set it will end the game
+  if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {//once we have gone through all the questions availible or have maxed out the number of questions set it will end the game
     localStorage.setItem("mostRecentScore", score);
+
     //go to the end page
-    return window.location.assign("#general_knowledge_game_end");
+    return window.location.assign("#generalKnowledgeEnd");
   }
   questionCounter++;
   progressText.innerHTML = `Question ${questionCounter}/${MAX_QUESTIONS}`; //what number question they are on out of the max number of questions using es6 template literals
   //Update the progress bar
   progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;//calculates how far we are and displays in the progress bar with the needed percentage
 
-  const questionIndex = Math.floor(Math.random() * availableQuesions.length); //get a random number between 0 and max number of questions and will display the question related to that number
-  currentQuestion = availableQuesions[questionIndex];
+  const questionIndex = Math.floor(Math.random() * availableQuestions.length); //get a random number between 0 and max number of questions and will display the question related to that number
+  currentQuestion = availableQuestions[questionIndex];
   question.innerHTML = currentQuestion.question;//it will display the question and options in the html text, so it will pull the question and display it
 
   choices.forEach(choice => { //will display the options to the question being displayed due to the script above
@@ -83,7 +84,7 @@ getNewQuestion = () => {
     choice.innerHTML = currentQuestion["choice" + number];
   });
 
-  availableQuesions.splice(questionIndex, 1); //takes the availible questions array and removes the question that had just been displayed
+  availableQuestions.splice(questionIndex, 1); //takes the availible questions array and removes the question that had just been displayed
   acceptingAnswers = true; //it will allow the user to answer
 };
 

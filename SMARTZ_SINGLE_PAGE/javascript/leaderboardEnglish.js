@@ -15,42 +15,46 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.analytics();
 // Reference messages collection
-var scoresRef = firebase.database().ref("general/");
+var scoresRefE = firebase.database().ref("english/");
 
-const usernameGKL = document.getElementById("username");
-const saveScoreBtnGKL = document.getElementById("saveScoreBtn");
-const finalScoreGKL = document.getElementById("finalScore");
-const mostRecentScoreGKL = localStorage.getItem("mostRecentScore");
-console.log(mostRecentScoreGKL);
+const usernameEL = document.getElementById("usernameE");
+const saveScoreBtnEL = document.getElementById("saveScoreBtnE");
+const finalScoreEL = document.getElementById("finalScoreE");
+const mostRecentScoreEL = localStorage.getItem("mostRecentScoreE");
+console.log(mostRecentScoreEL);
 
-const MAX_HIGH_SCORESGKL = 10;
+const MAX_HIGH_SCORESEL = 10;
 
 
-function addItemsToListGK(name, score) {
-  let ul = document.getElementById("highScoresListGK");
-  let listItem = document.createElement("li"); //the number of highscores shown
+function addItemsToList(nameE, scoreE) {
+  let ulE = document.getElementById("highScoresListE");
+  let listItemEL = document.createElement("li"); //the number of highscores shown
   let contents = document.createTextNode(
-    "Name: " + name +  "   Score: " + score
+    "Name: " + nameE +  "   Score: " + scoreE
   );
-  listItem.appendChild(contents);
-  ul.appendChild(listItem);
+  listItemEL.appendChild(contents);
+  ulE.appendChild(listItemEL);
 }
 
 
 //calls for the data from database
-function FetchAllDataGK() {
+function FetchAllData() {
   firebase
     .database()
-    .ref("general")
+    .ref("english")
     .once("value", function (snapshot) {
+      console.log("English data", snapshot);
       //a snapshot is a picture of the data at a particular database reference at a single point in time
       snapshot.forEach(function (ChildSnapshot) {
-        let name = ChildSnapshot.val().name;
-        let score = ChildSnapshot.val().score;
-        addItemsToListGK(name, score);
+        console.log("English child", ChildSnapshot);
+        let nameE = ChildSnapshot.val().nameE;
+        let scoreE = ChildSnapshot.val().scoreE;
+        addItemsToList(nameE, scoreE);
       });
     });
 }
 
-
-  FetchAllDataGK();
+window.onload = () => {
+  console.log("Onload function called");
+  FetchAllData();
+};
