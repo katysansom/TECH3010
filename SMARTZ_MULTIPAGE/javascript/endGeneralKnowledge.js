@@ -1,6 +1,6 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
+/*var firebaseConfig = {
   apiKey: "AIzaSyDuejSqZSWsXGYcO1qaILbyIpJJb5jvIUs",
   authDomain: "smartzmultipage.firebaseapp.com",
   databaseURL: "https://smartzmultipage-default-rtdb.firebaseio.com/",
@@ -13,6 +13,24 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+*/
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  // Your web app's Firebase configuration
+   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+   var firebaseConfig = {
+     apiKey: "AIzaSyCdaUaHnd5l46I01HqZiTAKJgzJkp8vCs0",
+     authDomain: "smartzmultipage-991ce.firebaseapp.com",
+     databaseURL: "https://smartzmultipage-991ce-default-rtdb.firebaseio.com/",
+     projectId: "smartzmultipage-991ce",
+     storageBucket: "smartzmultipage-991ce.appspot.com",
+     messagingSenderId: "933437273989",
+     appId: "1:933437273989:web:0bf41986da46863eb9b6ec",
+     measurementId: "G-KQD9LJ007G"
+   };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
 // Reference messages collection
 var scoresRef = firebase.database().ref("general/");
 

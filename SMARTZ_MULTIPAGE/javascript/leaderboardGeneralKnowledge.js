@@ -1,17 +1,18 @@
 /*Help from https://youtu.be/O4N7yfaJYhI to make this*/
 
+
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-  apiKey: "AIzaSyDuejSqZSWsXGYcO1qaILbyIpJJb5jvIUs",
-  authDomain: "smartzmultipage.firebaseapp.com",
-  databaseURL: "https://smartzmultipage-default-rtdb.firebaseio.com/",
-  projectId: "smartzmultipage",
-  storageBucket: "smartzmultipage.appspot.com",
-  messagingSenderId: "398309169877",
-  appId: "1:398309169877:web:daffc48ea2dbe54241a05c",
-  measurementId: "G-746DK30RKC",
-};
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ var firebaseConfig = {
+   apiKey: "AIzaSyCdaUaHnd5l46I01HqZiTAKJgzJkp8vCs0",
+   authDomain: "smartzmultipage-991ce.firebaseapp.com",
+   databaseURL: "https://smartzmultipage-991ce-default-rtdb.firebaseio.com/",
+   projectId: "smartzmultipage-991ce",
+   storageBucket: "smartzmultipage-991ce.appspot.com",
+   messagingSenderId: "933437273989",
+   appId: "1:933437273989:web:0bf41986da46863eb9b6ec",
+   measurementId: "G-KQD9LJ007G"
+ };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
